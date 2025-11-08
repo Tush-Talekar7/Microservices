@@ -21,7 +21,7 @@ public class OrderService {
         this.restTemplate = restTemplate;
     }
 
-    public String placeOrder(Order order) {
+    public InventoryResponseDTO placeOrder(Order order) {
         log.info("Placing order for SKU: {}", order.getSkuCode());
 
         String url = "http://localhost:9090/api/inventory/isProductInStock";
@@ -45,7 +45,7 @@ public class OrderService {
         if (OrderConstants.SUCCESS.equalsIgnoreCase(responseDTO.getMessage())) {
             orderRepository.save(order);
             log.info("Order placed successfully for SKU: {}", order.getSkuCode());
-            return "Order placed successfully";
+            return responseDTO;
         } else if (OrderConstants.OUT_OF_STOCK.equalsIgnoreCase(responseDTO.getMessage())) {
             throw new RuntimeException("Order not placed — Product is out of stock");
         } else {
