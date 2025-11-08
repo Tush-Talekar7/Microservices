@@ -35,7 +35,7 @@ public class StockService {
             log.warn("Out of stock for: {}", skuCode);
             return new InventoryResponseDTO(skuCode, false, false, "Out of stock");
         }
-        
+
         if (decreaseFlag) {
             boolean decreased = decreaseTheStock(stock, requestedQty);
             log.info("Stock decreased status for {} : {}", skuCode, decreased);
