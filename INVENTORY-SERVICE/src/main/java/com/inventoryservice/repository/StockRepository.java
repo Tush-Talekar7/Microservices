@@ -1,6 +1,6 @@
-package com.invenrotyservice.repository;
+package com.inventoryservice.repository;
 
-import com.invenrotyservice.entity.Stock;
+import com.inventoryservice.entity.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
